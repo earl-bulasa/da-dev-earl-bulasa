@@ -6,15 +6,15 @@ const ToDosView: React.FC<ToDosCalcedProps> = ({ toDos, handleCompleteToDo }) =>
       <table>
         <thead>
           <tr>
-            <th>To Do</th>
-            <th>Complete</th>
+            <th className="justify-start w-40">To Do</th>
+            <th className="w-40">Complete</th>
           </tr>
         </thead>
         <tbody>
           {toDos.map((toDo) => {
             return (
               <tr key={toDo.id}>
-                <td className="flex flex-col">
+                <td>
                   <p>{toDo.name}</p>
                 </td>
                 <td>

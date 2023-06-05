@@ -28,7 +28,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="flex">
+    <div className="flex gap-x-5">
       <AddToDo addNewToDoToList={addNewToDoToList} />
       <ToDos toDos={toDos} updateCompleteToDos={updateCompleteToDos} />
     </div>

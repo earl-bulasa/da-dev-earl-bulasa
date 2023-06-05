@@ -9,11 +9,9 @@ const AddToDoContainer: React.FC<AddToDoPublicProps> = ({
   addNewToDoToList,
 }) => {
   const [name, setName] = useState("");
-  const [details, setDetails] = useState("");
 
   const clearForm = () => {
     setName("");
-    setDetails("");
   };
 
   const addToDo = (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,8 +27,6 @@ const AddToDoContainer: React.FC<AddToDoPublicProps> = ({
   const calcedProps: AddToDoCalcedProps = {
     name,
     setName,
-    details,
-    setDetails,
     addToDo,
   };
 
