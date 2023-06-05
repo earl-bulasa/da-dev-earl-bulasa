@@ -1,13 +1,18 @@
 import { ToDosCalcedProps } from "./ToDos.props";
 
-const ToDosView: React.FC<ToDosCalcedProps> = ({ toDos, handleCompleteToDo }) => {
+const ToDosView: React.FC<ToDosCalcedProps> = ({
+  toDos,
+  handleCompleteToDo,
+  handleRemoveToDo,
+}) => {
   return (
     <div>
       <table>
         <thead>
           <tr>
-            <th className="justify-start w-40">To Do</th>
+            <th className="w-40">To Do</th>
             <th className="w-40">Complete</th>
+            <th className="w-40">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -24,6 +29,11 @@ const ToDosView: React.FC<ToDosCalcedProps> = ({ toDos, handleCompleteToDo }) =>
                     checked={toDo.is_complete}
                     onChange={() => handleCompleteToDo(toDo.id)}
                   />
+                </td>
+                <td>
+                  <button className="border border-black px-2" onClick={() => handleRemoveToDo(toDo.id)}>
+                    Delete
+                  </button>
                 </td>
               </tr>
             );

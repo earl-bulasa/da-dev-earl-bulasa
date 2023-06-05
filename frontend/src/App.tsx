@@ -25,12 +25,20 @@ const App: React.FC = () => {
 
   const addNewToDoToList = (toDo: ToDo) => {
     setToDos([...toDos, toDo]);
-  }
+  };
+
+  const removeToDoInList = (id: number) => {
+    setToDos([...toDos].filter((toDo) => toDo.id !== id));
+  };
 
   return (
     <div className="flex gap-x-5">
       <AddToDo addNewToDoToList={addNewToDoToList} />
-      <ToDos toDos={toDos} updateCompleteToDos={updateCompleteToDos} />
+      <ToDos
+        toDos={toDos}
+        updateCompleteToDos={updateCompleteToDos}
+        removeToDoInList={removeToDoInList}
+      />
     </div>
   );
 };
