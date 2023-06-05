@@ -17,7 +17,6 @@ class ToDoResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'details' => $this->details,
             'is_complete' => $this->is_complete
         ];
     }

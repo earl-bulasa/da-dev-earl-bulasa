@@ -18,7 +18,7 @@ const AddToDoContainer: React.FC<AddToDoPublicProps> = ({
 
   const addToDo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    apiFetch<{ to_do: ToDo }>(AddNewToDo({ name, details } as ToDo))
+    apiFetch<{ to_do: ToDo }>(AddNewToDo({ name } as ToDo))
       .then((res) => {
         clearForm();
         addNewToDoToList(res.data.to_do);

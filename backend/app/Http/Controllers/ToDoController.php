@@ -35,8 +35,7 @@ class ToDoController extends Controller
     public function store(AddToDoRequest $request)
     {
         $to_do_request = [
-            'name' => $request->name,
-            'details' => $request->details
+            'name' => $request->name
         ];
 
         $to_do = $this->toDoRepository->addToDo($to_do_request);

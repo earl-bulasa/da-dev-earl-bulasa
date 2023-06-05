@@ -16,7 +16,6 @@ const ToDosView: React.FC<ToDosCalcedProps> = ({ toDos, handleCompleteToDo }) =>
               <tr key={toDo.id}>
                 <td className="flex flex-col">
                   <p>{toDo.name}</p>
-                  <p>{toDo.details}</p>
                 </td>
                 <td>
                   <input

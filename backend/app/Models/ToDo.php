@@ -10,7 +10,6 @@ class ToDo extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name',
-        'details'
+        'name'
     ];
 }

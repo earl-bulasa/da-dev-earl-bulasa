@@ -19,15 +19,6 @@ const AddToDoView: React.FC<AddToDoCalcedProps> = ({
             onChange={(e) => setName(e.currentTarget.value)}
           />
         </div>
-        <div className="flex gap-x-2">
-          <span>Details: </span>
-          <textarea
-            className="border border-black"
-            rows={10}
-            onChange={(e) => setDetails(e.currentTarget.value)}
-            value={details}
-          />
-        </div>
         <button type="submit">Save To Do</button>
       </form>
     </div>
