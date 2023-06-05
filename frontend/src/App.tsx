@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import AddToDo from "./components/AddToDo";
+import ToDos from "./components/ToDos";
 
-function App() {
-  const [count, setCount] = useState(0)
+import "./App.css";
+import ToDo from "./types/ToDo";
+import apiFetch, { GetToDos } from "./services/apiFetch";
+
+const App: React.FC = () => {
+  const [toDos, setToDos] = useState<ToDo[]>([]);
+
+  useEffect(() => {
+    apiFetch<{ to_dos: ToDo[] }>(GetToDos).then((res) => {
+      setToDos(res.data.to_dos);
+    });
+  }, []);
+
+  const updateCompleteToDos = (id: number) => {
+    const newToDos = toDos.map((toDo) =>
+      toDo.id === id ? { ...toDo, is_complete: true } : toDo
+    );
+
+    setToDos(newToDos);
+  };
+
+  const addNewToDoToList = (toDo: ToDo) => {
+    setToDos([...toDos, toDo]);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="flex">
+      <AddToDo addNewToDoToList={addNewToDoToList} />
+      <ToDos toDos={toDos} updateCompleteToDos={updateCompleteToDos} />
+    </div>
+  );
+};
 
-export default App
+export default App;
